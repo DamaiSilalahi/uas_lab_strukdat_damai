@@ -8,6 +8,7 @@
 #include <sstream>
 #include <algorithm>
 #include <stack>
+#include <climits>
 #define V 10
 
 
@@ -120,18 +121,6 @@ void dijkstra(int graph[V][V], int src, int dist[], bool sptSet[]) {
     }
 }
 
-void hitungBiayaPengiriman(int dist[], int biayaPerKm) {
-    cout << "\nBiaya Pengiriman (Per Kilometer Rp " << biayaPerKm << "):\n";
-    for (int i = 0; i < V; i++) {
-        if (dist[i] == INT_MAX) {
-            cout << "Ke vertex " << i << ": Tidak dapat dijangkau\n";
-        } else {
-            int biaya = dist[i] * biayaPerKm;
-            cout << "Ke vertex " << i << ": " << dist[i] << " km, Biaya: Rp " << biaya << "\n";
-        }
-    }
-}
-
 void menuPengiriman() {
     int pilihan, tujuan;
     int dist[V];
@@ -224,7 +213,7 @@ void paymentMenu(const string& nama) {
         cout << "Tujuan tidak dapat dijangkau, tidak ada biaya ongkir.\n";
     }
 
-    double grandTotal = totalAmount + ongkir;
+    double grandTotal = totalAmount + ongkir;   
     cout << "Total Pembayaran (Belanja + Ongkir): Rp" << fixed << setprecision(2) << grandTotal << endl;
 
     double amountPaid;
@@ -409,8 +398,6 @@ void categoryMenu() {
 
     } while (true);
 }
-
-
 
 void tambahKeList(Produk produk) {
     Node* nodeBaru = new Node{produk, nullptr};
