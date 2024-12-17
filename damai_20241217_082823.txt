@@ -1,0 +1,12 @@
+===========================
+       STRUK PEMBAYARAN
+===========================
+Nama Pelanggan: damai
+Jumlah Pembayaran: Rp35000.00
+Jumlah Dibayar: Rp40000.00
+Kembalian: Rp5000.00
+Waktu Pembayaran: 08:28:23 pada 17/12/2024
+===========================
+   Terima kasih telah
+   berbelanja di Toko (GO GURL)!
+===========================

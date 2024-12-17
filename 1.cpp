@@ -25,7 +25,6 @@ struct Node {
     Node* next;
 };
 
-
 unordered_map<int, Produk> produkMap;
 stack<Node*> undoStack; 
 extern Node* head; 
@@ -42,7 +41,6 @@ void printLine(char ch = '=', int length = 50) {
     }
     cout << endl;
 }
-// d
 
 void printHeader() {
     printLine('*', 50);
@@ -58,6 +56,7 @@ void displayMenu() {
     cout << "| 1 | Pilih kategori belanja                  |" << endl;
     cout << "| 2 | Kelola List                             |" << endl;
     cout << "| 3 | Pembayaran                              |" << endl;
+    cout << "| 4 | Hitung Biaya Pengiriman                 |" << endl;
     cout << "| 0 | Exit                                    |" << endl;
     printLine('-', 50);
 }
@@ -141,8 +140,8 @@ void menuPengiriman() {
     do {
         cout << "\n=== MENU PENGIRIMAN ===\n";
         cout << "1. Hitung Biaya Pengiriman\n";
-        cout << "2. Kembali ke Menu Utama\n";
-        cout << "Pilih opsi (1-2): ";
+        cout << "0. Kembali ke Menu Utama\n";
+        cout << "Pilih opsi : ";
         cin >> pilihan;
 
         switch (pilihan) {
@@ -161,13 +160,13 @@ void menuPengiriman() {
                 }
                 break;
             }
-            case 2:
+            case 0:
                 cout << "Kembali ke Menu Utama.\n";
                 break;
             default:
                 cout << "Pilihan tidak valid. Silakan coba lagi.\n";
         }
-    } while (pilihan != 2);
+    } while (pilihan != 0);
 }
 
 void saveReceipt(const string& nama, double totalAmount, double amountPaid, double change) {
@@ -225,7 +224,6 @@ void paymentMenu(const string& nama) {
         cout << "Tujuan tidak dapat dijangkau, tidak ada biaya ongkir.\n";
     }
 
-    // Total pembayaran
     double grandTotal = totalAmount + ongkir;
     cout << "Total Pembayaran (Belanja + Ongkir): Rp" << fixed << setprecision(2) << grandTotal << endl;
 
@@ -246,8 +244,6 @@ void paymentMenu(const string& nama) {
         saveReceipt(nama, grandTotal, amountPaid, change);
     }
 }
-
-
 
 void printFarewell(const string& nama) {
     int totalWidth = 50;
@@ -558,7 +554,7 @@ int main() {
 
     do {
         displayMenu();
-        cout << "Pilih menu [0-3]: ";
+        cout << "Pilih menu [0-4]: ";
         cin >> pilihan;
 
         switch (pilihan) {
@@ -570,6 +566,9 @@ int main() {
                 break;
             case 3:
                 paymentMenu(nama);
+                break;
+            case 4:
+                menuPengiriman();
                 break;
             case 0:
                 cout << "-> Terima kasih telah berbelanja di Toko (GO GURL), " << nama << "!" << endl;
